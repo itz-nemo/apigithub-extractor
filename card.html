@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/mbt4tna.css">
+    <link rel="stylesheet" href="https://use.typekit.net/kid2tin.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<div class="minip">
+  <div class="mg">
+    <div class="clr"></div>
+    <div class="group">
+      <span>membergroup</span>
+    </div>
+  </div>
+  <div class="av" id="photo" ></div>
+  <div class="info">
+    <name id="name">jinkyu do</name>
+    <deets>
+      369 › he/him<br>
+      soccer player
+    </deets>
+  </div>
+  <a class="plot" title="plot with jinkyu" href="/">
+    view plots →
+  </a>
+</div>
+<script>
+    const requestUrl = 'https://api.github.com/users/itz-nemo'
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET',requestUrl)
+        xhr.send();
+        xhr.onreadystatechange =function(){
+            console.log(xhr.readyState);
+            if(xhr.readyState===4){
+                const data = JSON.parse(this.responseText)
+                console.log(data.name);
+                document.getElementById('photo').style = `background-image: url('${data.avatar_url}');`;
+                document.getElementById('name').innerHTML = `${data.name}`;
+
+            }
+        }
+</script>
+</body>
+</html>
